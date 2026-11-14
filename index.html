@@ -9685,6 +9685,8 @@ footer::before { display: none; }
             
             // Hide empty letter sections
             document.querySelectorAll('.letter-section').forEach(section => {
+                // Keep appendices, which have no glossary entries, available to navigation.
+                if (!section.querySelector('.entry')) return;
                 const visibleEntries = section.querySelectorAll('.entry:not(.hidden)');
                 section.style.display = visibleEntries.length === 0 ? 'none' : 'block';
             });
